@@ -46,6 +46,11 @@ require 'quote-routes.php';
 require 'configuration-routes.php';
 
 /**
+ * Legal modules routes (Audiências, Documentos, Horas, Prazos).
+ */
+require 'legal-modules-routes.php';
+
+/**
  * Rest routes.
  */
 require 'rest-routes.php';

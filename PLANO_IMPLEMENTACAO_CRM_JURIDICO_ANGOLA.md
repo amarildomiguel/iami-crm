@@ -431,7 +431,19 @@ Adicionar via seeders os seguintes atributos ao sistema de atributos:
 
 ---
 
-## Fase 4 — Novos Módulos Jurídicos
+## Fase 4 — Novos Módulos Jurídicos ✅ CONCLUÍDO
+
+> **Estado:** Concluído em Março de 2026.
+> - **4 Repositórios** criados: `HearingRepository`, `LegalDocumentRepository`, `TimeEntryRepository`, `LegalDeadlineRepository`
+> - **4 Controllers** criados: `HearingController`, `DocumentController`, `TimeEntryController`, `DeadlineController`
+> - **4 DataGrids** criados: `HearingDataGrid`, `DocumentDataGrid`, `TimeEntryDataGrid`, `DeadlineDataGrid`
+> - **10 Views** Blade criadas: index/create/view para Audiências e Documentos; index/create para Horas; index/create/calendar para Prazos
+> - **Rotas** registadas em `legal-modules-routes.php` e incluídas em `web.php`
+> - **Menu** actualizado com 4 novas entradas (Audiências, Documentos, Horas, Prazos)
+> - **ACL** actualizado com permissões granulares para todos os novos módulos
+> - **Traduções** pt_AO adicionadas para todos os novos módulos (hearings, documents, time-entries, deadlines)
+> - **4 Seeders** criados: `LegalPipelineSeeder` (10 fases processuais), `AngolanCourtsSeeder`, `LegalAreasSeeder`, `AngolanHolidaysSeeder`
+> - **Cálculo automático de prazos** em dias úteis com feriados angolanos implementado em `LegalDeadlineRepository`
 
 ### 4.1 Módulo de Processos (adaptação do Lead)
 
@@ -799,7 +811,7 @@ Preparar materiais de formação:
 | 1    | Localização e i18n (pt_AO)                | 1-2 semanas      | ✅ Concluído |
 | 2    | Moeda e formato numérico                  | 3-5 dias         | ✅ Concluído |
 | 3    | Reestruturação do modelo de dados         | 1-2 semanas      | ✅ Concluído |
-| 4    | Novos módulos jurídicos                    | 3-4 semanas      | ⏳ Pendente |
+| 4    | Novos módulos jurídicos                    | 3-4 semanas      | ✅ Concluído |
 | 5    | Adaptação do frontend e UX               | 2-3 semanas      | ⏳ Pendente |
 | 6    | Conformidade legal angolana                | 1 semana         | ⏳ Pendente |
 | 7    | Testes e garantia de qualidade            | 1-2 semanas      | ⏳ Pendente |
