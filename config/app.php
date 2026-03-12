@@ -133,14 +133,8 @@ return [
      */
 
     'available_locales' => [
-        'ar'    => 'Arabic',
         'en'    => 'English',
-        'es'    => 'Español',
-        'fa'    => 'Persian',
         'pt_AO' => 'Português (Angola)',
-        'pt_BR' => 'Português (Brasil)',
-        'tr'    => 'Türkçe',
-        'vi'    => 'Vietnamese',
     ],
 
     /*

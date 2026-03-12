@@ -4,25 +4,7 @@
  */
 import { configure, defineRule, Field, Form, ErrorMessage } from "vee-validate";
 import { localize, setLocale } from "@vee-validate/i18n";
-import ar from "@vee-validate/i18n/dist/locale/ar.json";
-import bn from "@vee-validate/i18n/dist/locale/bn.json";
-import de from "@vee-validate/i18n/dist/locale/de.json";
 import en from "@vee-validate/i18n/dist/locale/en.json";
-import es from "@vee-validate/i18n/dist/locale/es.json";
-import fa from "@vee-validate/i18n/dist/locale/fa.json";
-import fr from "@vee-validate/i18n/dist/locale/fr.json";
-import he from "@vee-validate/i18n/dist/locale/he.json";
-import hi_IN from "../../locales/hi_IN.json";
-import it from "@vee-validate/i18n/dist/locale/it.json";
-import ja from "@vee-validate/i18n/dist/locale/ja.json";
-import nl from "@vee-validate/i18n/dist/locale/nl.json";
-import pl from "@vee-validate/i18n/dist/locale/pl.json";
-import pt_BR from "@vee-validate/i18n/dist/locale/pt_BR.json";
-import ru from "@vee-validate/i18n/dist/locale/ru.json";
-import sin from "../../locales/sin.json";
-import tr from "@vee-validate/i18n/dist/locale/tr.json";
-import uk from "@vee-validate/i18n/dist/locale/uk.json";
-import zh_CN from "@vee-validate/i18n/dist/locale/zh_CN.json";
 import { all } from '@vee-validate/rules';
 
 window.defineRule = defineRule;
@@ -140,48 +122,12 @@ export default {
              * locales can be added in the same way.
              */
             generateMessage: localize({
-                ar: {
-                    ...ar,
-                    messages: {
-                        ...ar.messages,
-                        phone: "يجب أن يكون هذا {field} رقم هاتف صالحًا",
-                        after: "يجب أن يكون {field} تاريخًا في المستقبل أو اليوم.",
-                    },
-                },
-        
                 en: {
                     ...en,
                     messages: {
                         ...en.messages,
                         phone: "This {field} must be a valid phone number",
                         after: "The {field} must be a date in the future or today.",
-                    },
-                },
-        
-                es: {
-                    ...es,
-                    messages: {
-                        ...es.messages,
-                        phone: "Este {field} debe ser un número de teléfono válido.",
-                        after: "El {field} debe ser una fecha en el futuro o hoy.",
-                    },
-                },
-        
-                fa: {
-                    ...fa,
-                    messages: {
-                        ...fa.messages,
-                        phone: "این {field} باید یک شماره تلفن معتبر باشد.",
-                        after: "{field} باید یک تاریخ در آینده یا امروز باشد.",
-                    },
-                },
-        
-                tr: {
-                    ...tr,
-                    messages: {
-                        ...tr.messages,
-                        phone: "Bu {field} geçerli bir telefon numarası olmalıdır.",
-                        after: "{field} gelecekte veya bugün olmalıdır.",
                     },
                 },
             }),
