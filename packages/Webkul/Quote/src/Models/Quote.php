@@ -40,6 +40,18 @@ class Quote extends Model implements QuoteContract
         'expired_at',
         'user_id',
         'person_id',
+        // Fase 3 — campos jurídicos
+        'payment_terms',
+        'billing_type',
+        'hourly_rate',
+        'retainer_fee',
+        'iva_regime',
+        'iva_percentage',
+        // Fase 6 — conformidade IVA Angola
+        'iva_amount',
+        'iva_exempt',
+        'iva_exempt_reason',
+        'sub_total_before_iva',
     ];
 
     /**

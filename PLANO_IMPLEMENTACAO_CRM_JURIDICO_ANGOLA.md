@@ -662,7 +662,19 @@ Criar templates padrão em `packages/Webkul/EmailTemplate/`:
 
 ---
 
-## Fase 6 — Conformidade Legal Angolana
+## Fase 6 — Conformidade Legal Angolana ✅ CONCLUÍDO
+
+> **Estado:** Concluído em Março de 2026.
+> - **Migration** `add_iva_amount_to_quotes_table` — campos `iva_amount`, `iva_exempt`, `iva_exempt_reason`, `sub_total_before_iva` adicionados à tabela `quotes`
+> - **Migration** `add_data_protection_to_persons_table` — campos de consentimento LGPD (Lei n.º 22/11) adicionados à tabela `persons`
+> - **IVA 14%** calculado automaticamente em `QuoteRepository::calculateIva()` conforme Lei n.º 7/19
+> - **Isenção de IVA** implementada com flag `iva_exempt` e campo `iva_exempt_reason`
+> - **Propostas de honorários** (create/edit) com secção de IVA: taxa configurável, checkbox de isenção, cálculo em tempo real via Vue.js
+> - **PDF da proposta** actualizado com secção IVA destacada (base tributável + IVA 14% + total com IVA)
+> - **Bouncer** extendido com `canViewLead()`, `authorizeLeadAccess()`, `isIntern()`, `canModify()` para controlo de acesso por processo
+> - **LegalRolesSeeder** — 4 perfis criados: Administrador (global), Supervisor Jurídico (group), Advogado (individual), Estagiário (individual + read-only)
+> - **LegalComplianceSeeder** — parâmetros de conformidade inseridos em `core_config`: IVA 14%, protecção de dados, sigilo OAA, NIF obrigatório
+> - **Traduções pt_AO** actualizadas: IVA, isenção, controlo de acesso, protecção de dados, campos obrigatórios por lei
 
 ### 6.1 Legislação Relevante
 
@@ -823,7 +835,7 @@ Preparar materiais de formação:
 | 3    | Reestruturação do modelo de dados         | 1-2 semanas      | ✅ Concluído |
 | 4    | Novos módulos jurídicos                    | 3-4 semanas      | ✅ Concluído |
 | 5    | Adaptação do frontend e UX               | 2-3 semanas      | ✅ Concluído |
-| 6    | Conformidade legal angolana                | 1 semana         | ⏳ Pendente |
+| 6    | Conformidade legal angolana                | 1 semana         | ✅ Concluído |
 | 7    | Testes e garantia de qualidade            | 1-2 semanas      | ⏳ Pendente |
 | 8    | Implantação e formação                    | 1 semana         | ⏳ Pendente |
 | **Total** |                                       | **10-15 semanas** | — |

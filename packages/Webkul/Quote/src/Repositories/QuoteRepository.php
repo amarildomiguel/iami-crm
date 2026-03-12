@@ -48,12 +48,46 @@ class QuoteRepository extends Repository
     }
 
     /**
+     * Calculate IVA for quote data.
+     *
+     * Aplica a taxa de IVA de 14% conforme o Código do IVA Angolano (Lei n.º 7/19).
+     * Se o cliente ou a proposta tiver isenção de IVA, o valor calculado será 0.
+     */
+    protected function calculateIva(array $data): array
+    {
+        $ivaExempt = ! empty($data['iva_exempt']) && $data['iva_exempt'];
+        $ivaPercentage = isset($data['iva_percentage']) ? (float) $data['iva_percentage'] : 14.00;
+        $subTotal = isset($data['sub_total']) ? (float) $data['sub_total'] : 0.0;
+        $discountAmount = isset($data['discount_amount']) ? (float) $data['discount_amount'] : 0.0;
+
+        $subTotalBeforeIva = $subTotal - $discountAmount;
+
+        if ($ivaExempt || $ivaPercentage <= 0) {
+            $ivaAmount = 0.0;
+        } else {
+            $ivaAmount = round($subTotalBeforeIva * ($ivaPercentage / 100), 2);
+        }
+
+        $data['iva_amount'] = $ivaAmount;
+        $data['sub_total_before_iva'] = $subTotalBeforeIva;
+        $data['iva_percentage'] = $ivaPercentage;
+
+        // Recalcular grand_total incluindo IVA (subtotal - desconto + ajuste + IVA)
+        $adjustmentAmount = isset($data['adjustment_amount']) ? (float) $data['adjustment_amount'] : 0.0;
+        $data['grand_total'] = round($subTotalBeforeIva + $ivaAmount + $adjustmentAmount, 2);
+
+        return $data;
+    }
+
+    /**
      * Create.
      *
      * @return Quote
      */
     public function create(array $data)
     {
+        $data = $this->calculateIva($data);
+
         $quote = parent::create($data);
 
         $this->attributeValueRepository->save(array_merge($data, [
@@ -78,6 +112,8 @@ class QuoteRepository extends Repository
      */
     public function update(array $data, $id, $attributes = [])
     {
+        $data = $this->calculateIva($data);
+
         $quote = $this->find($id);
 
         parent::update($data, $id);
