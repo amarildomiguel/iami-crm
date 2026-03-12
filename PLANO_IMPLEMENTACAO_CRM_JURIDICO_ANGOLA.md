@@ -171,7 +171,7 @@ Traduzir os seguintes ficheiros:
 
 ### 2.3 Províncias de Angola
 
-Inserir na tabela `country_states` as 18 províncias:
+Inserir na tabela `country_states` as 21 províncias:
 
 | Código | Província          |
 |--------|--------------------|
@@ -179,17 +179,20 @@ Inserir na tabela `country_states` as 18 províncias:
 | AO-BGU | Benguela          |
 | AO-BIE | Bié               |
 | AO-CAB | Cabinda           |
-| AO-CCU | Cuando Cubango    |
-| AO-CNO | Cuanza Norte      |
-| AO-CUS | Cuanza Sul        |
+| AO-CBG | Cubango           |
+| AO-CUA | Cuando            |
+| AO-CNO | Cuanza‑Norte      |
+| AO-CUS | Cuanza‑Sul        |
 | AO-CNN | Cunene            |
 | AO-HUA | Huambo            |
 | AO-HUI | Huíla             |
+| AO-ICB | Icolo e Bengo     |
 | AO-LUA | Luanda            |
-| AO-LNO | Lunda Norte       |
-| AO-LSU | Lunda Sul         |
+| AO-LNO | Lunda‑Norte       |
+| AO-LSU | Lunda‑Sul         |
 | AO-MAL | Malanje           |
 | AO-MOX | Moxico            |
+| AO-MLE | Moxico Leste      |
 | AO-NAM | Namibe            |
 | AO-UIG | Uíge              |
 | AO-ZAI | Zaire             |
@@ -389,7 +392,7 @@ Adicionar via seeders os seguintes atributos ao sistema de atributos:
 - `legal_area` — Área Jurídica (selecção: Cível, Penal, Laboral, Comercial, Família, Administrativo, Fiscal)
 - `case_type` — Tipo de Acção (selecção)
 - `urgency_level` — Urgência (selecção: Baixa, Normal, Alta, Urgente)
-- `province` — Província (selecção com as 18 províncias)
+- `province` — Província (selecção com as 21 províncias)
 
 **Para Persons (Clientes):**
 - `bi_number` — Nº do BI
@@ -706,7 +709,7 @@ Criar seeders para:
    - Tribunal Supremo
    - Tribunal Constitucional
    - Tribunal de Contas
-   - Tribunais Provinciais (18 províncias)
+   - Tribunais Provinciais (21 províncias)
    - Tribunais de Comarca
    - Tribunal do Trabalho
    - Tribunal Administrativo
