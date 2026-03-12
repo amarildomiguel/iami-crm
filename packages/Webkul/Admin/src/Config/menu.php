@@ -35,6 +35,50 @@ return [
     ],
 
     /**
+     * Audiências.
+     */
+    [
+        'key'        => 'hearings',
+        'name'       => 'admin::app.layouts.hearings',
+        'route'      => 'admin.hearings.index',
+        'sort'       => 35,
+        'icon-class' => 'icon-calendar',
+    ],
+
+    /**
+     * Documentos Jurídicos.
+     */
+    [
+        'key'        => 'documents',
+        'name'       => 'admin::app.layouts.documents',
+        'route'      => 'admin.documents.index',
+        'sort'       => 36,
+        'icon-class' => 'icon-note',
+    ],
+
+    /**
+     * Registo de Horas.
+     */
+    [
+        'key'        => 'time-entries',
+        'name'       => 'admin::app.layouts.time-entries',
+        'route'      => 'admin.time-entries.index',
+        'sort'       => 37,
+        'icon-class' => 'icon-clock',
+    ],
+
+    /**
+     * Prazos Processuais.
+     */
+    [
+        'key'        => 'deadlines',
+        'name'       => 'admin::app.layouts.deadlines',
+        'route'      => 'admin.deadlines.index',
+        'sort'       => 38,
+        'icon-class' => 'icon-deadline',
+    ],
+
+    /**
      * Emails.
      */
     [

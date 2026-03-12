@@ -32,6 +32,101 @@ return [
         'route' => ['admin.leads.delete', 'admin.leads.mass_delete'],
         'sort'  => 4,
     ], [
+        'key'   => 'hearings',
+        'name'  => 'admin::app.acl.hearings',
+        'route' => 'admin.hearings.index',
+        'sort'  => 35,
+    ], [
+        'key'   => 'hearings.create',
+        'name'  => 'admin::app.acl.create',
+        'route' => ['admin.hearings.create', 'admin.hearings.store'],
+        'sort'  => 1,
+    ], [
+        'key'   => 'hearings.view',
+        'name'  => 'admin::app.acl.view',
+        'route' => 'admin.hearings.view',
+        'sort'  => 2,
+    ], [
+        'key'   => 'hearings.edit',
+        'name'  => 'admin::app.acl.edit',
+        'route' => 'admin.hearings.update',
+        'sort'  => 3,
+    ], [
+        'key'   => 'hearings.delete',
+        'name'  => 'admin::app.acl.delete',
+        'route' => 'admin.hearings.delete',
+        'sort'  => 4,
+    ], [
+        'key'   => 'documents',
+        'name'  => 'admin::app.acl.documents',
+        'route' => 'admin.documents.index',
+        'sort'  => 36,
+    ], [
+        'key'   => 'documents.create',
+        'name'  => 'admin::app.acl.create',
+        'route' => ['admin.documents.create', 'admin.documents.store'],
+        'sort'  => 1,
+    ], [
+        'key'   => 'documents.view',
+        'name'  => 'admin::app.acl.view',
+        'route' => ['admin.documents.view', 'admin.documents.download'],
+        'sort'  => 2,
+    ], [
+        'key'   => 'documents.edit',
+        'name'  => 'admin::app.acl.edit',
+        'route' => 'admin.documents.update',
+        'sort'  => 3,
+    ], [
+        'key'   => 'documents.delete',
+        'name'  => 'admin::app.acl.delete',
+        'route' => 'admin.documents.delete',
+        'sort'  => 4,
+    ], [
+        'key'   => 'time-entries',
+        'name'  => 'admin::app.acl.time-entries',
+        'route' => 'admin.time-entries.index',
+        'sort'  => 37,
+    ], [
+        'key'   => 'time-entries.create',
+        'name'  => 'admin::app.acl.create',
+        'route' => ['admin.time-entries.create', 'admin.time-entries.store'],
+        'sort'  => 1,
+    ], [
+        'key'   => 'time-entries.edit',
+        'name'  => 'admin::app.acl.edit',
+        'route' => ['admin.time-entries.update', 'admin.time-entries.mark_billed'],
+        'sort'  => 2,
+    ], [
+        'key'   => 'time-entries.delete',
+        'name'  => 'admin::app.acl.delete',
+        'route' => 'admin.time-entries.delete',
+        'sort'  => 3,
+    ], [
+        'key'   => 'deadlines',
+        'name'  => 'admin::app.acl.deadlines',
+        'route' => 'admin.deadlines.index',
+        'sort'  => 38,
+    ], [
+        'key'   => 'deadlines.create',
+        'name'  => 'admin::app.acl.create',
+        'route' => ['admin.deadlines.create', 'admin.deadlines.store'],
+        'sort'  => 1,
+    ], [
+        'key'   => 'deadlines.view',
+        'name'  => 'admin::app.acl.view',
+        'route' => ['admin.deadlines.calendar', 'admin.deadlines.calculate_due_date'],
+        'sort'  => 2,
+    ], [
+        'key'   => 'deadlines.edit',
+        'name'  => 'admin::app.acl.edit',
+        'route' => 'admin.deadlines.update',
+        'sort'  => 3,
+    ], [
+        'key'   => 'deadlines.delete',
+        'name'  => 'admin::app.acl.delete',
+        'route' => 'admin.deadlines.delete',
+        'sort'  => 4,
+    ], [
         'key'   => 'quotes',
         'name'  => 'admin::app.acl.quotes',
         'route' => 'admin.quotes.index',
