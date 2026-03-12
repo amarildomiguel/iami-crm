@@ -120,7 +120,7 @@ return [
     |
      */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => env('APP_LOCALE', 'pt_AO'),
 
     /*
     |--------------------------------------------------------------------------
@@ -137,7 +137,8 @@ return [
         'en'    => 'English',
         'es'    => 'Español',
         'fa'    => 'Persian',
-        'pt_BR' => 'Portuguese',
+        'pt_AO' => 'Português (Angola)',
+        'pt_BR' => 'Português (Brasil)',
         'tr'    => 'Türkçe',
         'vi'    => 'Vietnamese',
     ],
@@ -153,7 +154,7 @@ return [
     |
      */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'pt_AO',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,7 +167,7 @@ return [
     |
      */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'pt_PT',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,7 +178,7 @@ return [
     |
      */
 
-    'currency' => env('APP_CURRENCY', 'USD'),
+    'currency' => env('APP_CURRENCY', 'AOA'),
 
     /*
     |--------------------------------------------------------------------------

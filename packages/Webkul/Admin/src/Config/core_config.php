@@ -25,7 +25,7 @@ return [
                 'name'    => 'locale',
                 'title'   => 'admin::app.configuration.index.general.general.locale-settings.title',
                 'type'    => 'select',
-                'default' => 'en',
+                'default' => 'pt_AO',
                 'options' => 'Webkul\Core\Core@locales',
             ],
         ],
