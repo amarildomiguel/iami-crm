@@ -14,14 +14,22 @@ class DashboardController extends Controller
      * @var array
      */
     protected $typeFunctions = [
-        'over-all'             => 'getOverAllStats',
-        'revenue-stats'        => 'getRevenueStats',
-        'total-leads'          => 'getTotalLeadsStats',
-        'revenue-by-sources'   => 'getLeadsStatsBySources',
-        'revenue-by-types'     => 'getLeadsStatsByTypes',
-        'top-selling-products' => 'getTopSellingProducts',
-        'top-persons'          => 'getTopPersons',
-        'open-leads-by-states' => 'getOpenLeadsByStates',
+        'over-all'                  => 'getOverAllStats',
+        'revenue-stats'             => 'getRevenueStats',
+        'total-leads'               => 'getTotalLeadsStats',
+        'revenue-by-sources'        => 'getLeadsStatsBySources',
+        'revenue-by-types'          => 'getLeadsStatsByTypes',
+        'top-selling-products'      => 'getTopSellingProducts',
+        'top-persons'               => 'getTopPersons',
+        'open-leads-by-states'      => 'getOpenLeadsByStates',
+        // Phase 5 — Legal Stats
+        'active-processes'          => 'getActiveProcesses',
+        'upcoming-hearings'         => 'getUpcomingHearings',
+        'upcoming-deadlines'        => 'getUpcomingDeadlines',
+        'billable-hours'            => 'getBillableHours',
+        'processes-by-legal-area'   => 'getProcessesByLegalArea',
+        'processes-by-province'     => 'getProcessesByProvince',
+        'lawyer-performance'        => 'getLawyerPerformance',
     ];
 
     /**

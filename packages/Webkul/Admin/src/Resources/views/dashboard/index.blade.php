@@ -36,6 +36,32 @@
     <!-- Body Component -->
     {!! view_render_event('admin.dashboard.index.content.before') !!}
 
+    <!-- Legal Summary Row: Processos Activos + Horas Facturáveis -->
+    {!! view_render_event('admin.dashboard.index.legal_summary.before') !!}
+    <div class="mt-3.5 flex gap-4 max-xl:flex-wrap">
+        <div class="flex flex-1 flex-col gap-4 max-xl:flex-auto">
+            <!-- Processos Activos -->
+            @include('admin::dashboard.index.legal-active-processes')
+        </div>
+        <div class="flex w-[378px] max-w-full flex-col gap-4 max-sm:w-full">
+            <!-- Horas Facturáveis -->
+            @include('admin::dashboard.index.legal-billable-hours')
+        </div>
+    </div>
+    {!! view_render_event('admin.dashboard.index.legal_summary.after') !!}
+
+    <!-- Legal Row: Audiências + Prazos -->
+    {!! view_render_event('admin.dashboard.index.legal_hearings_deadlines.before') !!}
+    <div class="mt-4 flex gap-4 max-xl:flex-wrap">
+        <div class="flex flex-1 flex-col gap-4 max-xl:flex-auto">
+            @include('admin::dashboard.index.legal-upcoming-hearings')
+        </div>
+        <div class="flex flex-1 flex-col gap-4 max-xl:flex-auto">
+            @include('admin::dashboard.index.legal-upcoming-deadlines')
+        </div>
+    </div>
+    {!! view_render_event('admin.dashboard.index.legal_hearings_deadlines.after') !!}
+
     <div class="mt-3.5 flex gap-4 max-xl:flex-wrap">
         <!-- Left Section -->
         {!! view_render_event('admin.dashboard.index.content.left.before') !!}
@@ -65,6 +91,12 @@
         {!! view_render_event('admin.dashboard.index.content.right.before') !!}
 
         <div class="flex w-[378px] max-w-full flex-col gap-4 max-sm:w-full">
+            <!-- Processos por Área Jurídica -->
+            @include('admin::dashboard.index.legal-processes-by-area')
+
+            <!-- Performance por Advogado -->
+            @include('admin::dashboard.index.legal-lawyer-performance')
+
             <!-- Revenue by Types -->
             @include('admin::dashboard.index.open-leads-by-states')
 
