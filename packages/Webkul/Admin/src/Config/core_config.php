@@ -27,6 +27,24 @@ return [
                 'type'    => 'select',
                 'default' => 'pt_AO',
                 'options' => 'Webkul\Core\Core@locales',
+            ], [
+                'name'    => 'currency',
+                'title'   => 'admin::app.configuration.index.general.general.locale-settings.currency',
+                'type'    => 'select',
+                'default' => 'AOA',
+                'options' => [
+                    ['title' => 'Kwanza Angolano (AOA / Kz)', 'value' => 'AOA'],
+                    ['title' => 'Euro (EUR / €)',              'value' => 'EUR'],
+                    ['title' => 'Dólar Americano (USD / $)',   'value' => 'USD'],
+                    ['title' => 'Real Brasileiro (BRL / R$)',  'value' => 'BRL'],
+                    ['title' => 'Rand Sul-africano (ZAR / R)', 'value' => 'ZAR'],
+                ],
+            ], [
+                'name'    => 'timezone',
+                'title'   => 'admin::app.configuration.index.general.general.locale-settings.timezone',
+                'type'    => 'select',
+                'default' => 'Africa/Luanda',
+                'options' => 'Webkul\Core\Core@timezones',
             ],
         ],
     ], [

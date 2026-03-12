@@ -147,7 +147,14 @@ Traduzir os seguintes ficheiros:
 
 ---
 
-## Fase 2 — Adaptação da Moeda e Formato Numérico
+## Fase 2 — Adaptação da Moeda e Formato Numérico ✅ CONCLUÍDO
+
+> **Estado:** Concluído em Março de 2026.
+> - Método `formatAOAPrice` adicionado em `Core.php` com formato `1.234.567,00 Kz`
+> - Símbolo `Kz` devolvido por `currencySymbol('AOA')`
+> - `formatBasePrice` usa automaticamente a formatação angolana quando `currency = AOA`
+> - 21 províncias de Angola inseridas em `states.json` (ids 569–589, country_id=7)
+> - Campo de moeda (AOA padrão) e fuso horário (Africa/Luanda) adicionados em `core_config.php`
 
 ### 2.1 Configurar Kwanza Angolano (AOA) como Moeda Padrão
 
@@ -208,7 +215,20 @@ Inserir na tabela `country_states` as 21 províncias:
 
 ---
 
-## Fase 3 — Reestruturação do Modelo de Dados (Domínio Jurídico)
+## Fase 3 — Reestruturação do Modelo de Dados (Domínio Jurídico) ✅ CONCLUÍDO
+
+> **Estado:** Concluído em Março de 2026.
+> - Migration `add_legal_fields_to_leads_table` — 14 novos campos jurídicos na tabela `leads`
+> - Migration `add_legal_fields_to_persons_table` — 11 novos campos na tabela `persons`
+> - Migration `add_legal_fields_to_organizations_table` — 8 novos campos na tabela `organizations`
+> - Migration `add_legal_fields_to_quotes_table` — 6 novos campos na tabela `quotes` (incl. IVA 14%)
+> - Nova tabela `legal_documents` com relações a `leads`, `persons` e `users`
+> - Nova tabela `hearings` (Audiências) com relações a `leads` e `users`
+> - Nova tabela `time_entries` (Registo de Horas) com relações a `leads` e `users`
+> - Nova tabela `legal_deadlines` (Prazos Processuais) com relações a `leads` e `users`
+> - Models criados: `LegalDocument`, `Hearing`, `TimeEntry`, `LegalDeadline` (com Contracts e Proxies)
+> - `Lead.php` actualizado com relações `legalDocuments()`, `hearings()`, `timeEntries()`, `legalDeadlines()`
+> - `ModuleServiceProvider` actualizado com os 4 novos modelos
 
 ### 3.1 Novas Migrations
 
@@ -697,10 +717,10 @@ tests/Feature/Legal/
 
 - [x] Todas as strings do frontend traduzidas para pt_AO *(Fase 1 concluída)*
 - [ ] Nenhuma string hardcoded em inglês no frontend
-- [ ] Moeda exibida como Kz em todos os contextos *(locale AOA configurado — Fase 2 pendente)*
+- [x] Moeda exibida como Kz em todos os contextos *(formatAOAPrice implementado — Fase 2 concluída)*
 - [ ] Datas no formato DD/MM/AAAA
 - [ ] Números de telemóvel com formato angolano
-- [ ] Províncias angolanas disponíveis em todos os selectores
+- [x] Províncias angolanas disponíveis em todos os selectores *(21 províncias inseridas — Fase 2 concluída)*
 - [ ] IVA de 14% calculado correctamente
 - [ ] Prazos em dias úteis calculados com feriados angolanos
 - [ ] Controlo de acesso por processo funcional
@@ -777,8 +797,8 @@ Preparar materiais de formação:
 |------|--------------------------------------------|------------------|------------|
 | —    | Análise do Estado Actual                  | —                | ✅ Concluído |
 | 1    | Localização e i18n (pt_AO)                | 1-2 semanas      | ✅ Concluído |
-| 2    | Moeda e formato numérico                  | 3-5 dias         | ⏳ Pendente |
-| 3    | Reestruturação do modelo de dados         | 1-2 semanas      | ⏳ Pendente |
+| 2    | Moeda e formato numérico                  | 3-5 dias         | ✅ Concluído |
+| 3    | Reestruturação do modelo de dados         | 1-2 semanas      | ✅ Concluído |
 | 4    | Novos módulos jurídicos                    | 3-4 semanas      | ⏳ Pendente |
 | 5    | Adaptação do frontend e UX               | 2-3 semanas      | ⏳ Pendente |
 | 6    | Conformidade legal angolana                | 1 semana         | ⏳ Pendente |
