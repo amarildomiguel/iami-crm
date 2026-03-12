@@ -368,33 +368,66 @@
 
                <!-- Summary Table -->
                 <div class="summary">
-                    <table class="{{ app()->getLocale   () }}">
+                    <table class="{{ app()->getLocale() }}">
                         <tbody>
                             <tr>
                                 <td>@lang('admin::app.quotes.index.pdf.sub-total')</td>
                                 <td>-</td>
                                 <td>{!! core()->formatBasePrice($quote->sub_total, true) !!}</td>
                             </tr>
-        
-                            <tr>
-                                <td>@lang('admin::app.quotes.index.pdf.tax')</td>
-                                <td>-</td>
-                                <td>{!! core()->formatBasePrice($quote->tax_amount, true) !!}</td>
-                            </tr>
-        
-                            <tr>
-                                <td>@lang('admin::app.quotes.index.pdf.discount')</td>
-                                <td>-</td>
-                                <td>{!! core()->formatBasePrice($quote->discount_amount, true) !!}</td>
-                            </tr>
-        
-                            <tr>
-                                <td>@lang('admin::app.quotes.index.pdf.adjustment')</td>
-                                <td>-</td>
-                                <td>{!! core()->formatBasePrice($quote->adjustment_amount, true) !!}</td>
-                            </tr>
-        
-                            <tr>
+
+                            @if ($quote->discount_amount > 0)
+                                <tr>
+                                    <td>@lang('admin::app.quotes.index.pdf.discount')</td>
+                                    <td>-</td>
+                                    <td>- {!! core()->formatBasePrice($quote->discount_amount, true) !!}</td>
+                                </tr>
+                            @endif
+
+                            @if ($quote->tax_amount > 0)
+                                <tr>
+                                    <td>@lang('admin::app.quotes.index.pdf.tax')</td>
+                                    <td>-</td>
+                                    <td>{!! core()->formatBasePrice($quote->tax_amount, true) !!}</td>
+                                </tr>
+                            @endif
+
+                            {{-- IVA Angola — Lei n.º 7/19 (Código do IVA) --}}
+                            @if ($quote->iva_exempt)
+                                <tr style="color: #888; font-style: italic;">
+                                    <td colspan="2">@lang('admin::app.quotes.index.pdf.iva-exempt')</td>
+                                    <td>@lang('admin::app.quotes.index.pdf.iva-exempt-label')</td>
+                                </tr>
+                                @if ($quote->iva_exempt_reason)
+                                    <tr style="color: #888; font-size: 8px;">
+                                        <td colspan="3">@lang('admin::app.quotes.index.pdf.iva-exempt-reason'): {{ $quote->iva_exempt_reason }}</td>
+                                    </tr>
+                                @endif
+                            @else
+                                <tr>
+                                    <td>@lang('admin::app.quotes.index.pdf.sub-total-before-iva')</td>
+                                    <td>-</td>
+                                    <td>{!! core()->formatBasePrice($quote->sub_total_before_iva ?? ($quote->sub_total - $quote->discount_amount), true) !!}</td>
+                                </tr>
+
+                                <tr style="background-color: #EEF2FF; color: #1D4ED8;">
+                                    <td>
+                                        <strong>@lang('admin::app.quotes.index.pdf.iva', ['rate' => number_format($quote->iva_percentage ?? 14, 0) . '%'])</strong>
+                                    </td>
+                                    <td>-</td>
+                                    <td><strong>{!! core()->formatBasePrice($quote->iva_amount ?? 0, true) !!}</strong></td>
+                                </tr>
+                            @endif
+
+                            @if ($quote->adjustment_amount != 0)
+                                <tr>
+                                    <td>@lang('admin::app.quotes.index.pdf.adjustment')</td>
+                                    <td>-</td>
+                                    <td>{!! core()->formatBasePrice($quote->adjustment_amount, true) !!}</td>
+                                </tr>
+                            @endif
+
+                            <tr style="border-top: 2px solid #000DBB;">
                                 <td><strong>@lang('admin::app.quotes.index.pdf.grand-total')</strong></td>
                                 <td><strong>-</strong></td>
                                 <td><strong>{!! core()->formatBasePrice($quote->grand_total, true) !!}</strong></td>

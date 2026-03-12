@@ -343,7 +343,7 @@
                 </span>
 
                 <div class="flex justify-end">
-                    <div class="grid w-[348px] gap-4 rounded-lg bg-gray-100 p-4 text-sm dark:bg-gray-950 dark:text-white">
+                    <div class="grid w-[400px] gap-4 rounded-lg bg-gray-100 p-4 text-sm dark:bg-gray-950 dark:text-white">
                         <div class="flex w-full justify-between gap-x-5">
                             @lang('admin::app.quotes.create.sub-total', ['symbol' => core()->currencySymbol(config('app.currency'))])
 
@@ -382,6 +382,65 @@
                             <p>@{{ taxAmount }}</p>
                         </div>
 
+                        {{-- IVA Angola — Fase 6 Conformidade Legal --}}
+                        <div class="border-t border-gray-300 pt-2 dark:border-gray-700">
+                            <div class="flex w-full items-center justify-between gap-x-5">
+                                <label class="flex items-center gap-2 text-sm">
+                                    <input
+                                        type="checkbox"
+                                        name="iva_exempt"
+                                        v-model="ivaExempt"
+                                        :value="1"
+                                        class="h-4 w-4 rounded"
+                                    >
+                                    @lang('admin::app.quotes.create.iva-exempt')
+                                </label>
+                            </div>
+
+                            <div
+                                v-if="ivaExempt"
+                                class="mt-2 flex w-full justify-between gap-x-5"
+                            >
+                                <x-admin::form.control-group.control
+                                    type="text"
+                                    name="iva_exempt_reason"
+                                    :value="$quote->iva_exempt_reason"
+                                    :placeholder="trans('admin::app.quotes.create.iva-exempt-reason-placeholder')"
+                                    class="w-full text-sm"
+                                />
+                            </div>
+
+                            <div class="mt-2 flex w-full justify-between gap-x-5">
+                                <span class="text-gray-600 dark:text-gray-400">
+                                    @lang('admin::app.quotes.create.iva-rate')
+                                </span>
+
+                                <div class="flex items-center gap-1">
+                                    <x-admin::form.control-group.control
+                                        type="inline"
+                                        ::name="`iva_percentage`"
+                                        ::value="ivaPercentage"
+                                        rules="required|decimal:2|min_value:0|max_value:100"
+                                        ::errors="errors"
+                                        :label="trans('admin::app.quotes.create.iva-percentage')"
+                                        :placeholder="'14.00'"
+                                        @on-change="(event) => ivaPercentage = event.value"
+                                    />
+                                    <span>%</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-2 flex w-full justify-between gap-x-5 font-medium text-blue-700 dark:text-blue-400">
+                                @lang('admin::app.quotes.create.iva-amount', ['symbol' => core()->currencySymbol(config('app.currency'))])
+
+                                <input type="hidden" name="iva_amount" :value="ivaAmount">
+                                <input type="hidden" name="sub_total_before_iva" :value="subTotalBeforeIva">
+                                <input type="hidden" name="iva_percentage" :value="ivaPercentage">
+
+                                <p>@{{ ivaAmount }}</p>
+                            </div>
+                        </div>
+
                         <div class="flex w-full justify-between gap-x-5">
                             @lang('admin::app.quotes.create.total-adjustment', ['symbol' => core()->currencySymbol(config('app.currency'))])
 
@@ -397,7 +456,7 @@
                             />
                         </div>
 
-                        <div class="flex w-full justify-between gap-x-5">
+                        <div class="flex w-full justify-between gap-x-5 border-t border-gray-300 pt-2 text-base font-bold dark:border-gray-700">
                             @lang('admin::app.quotes.create.grand-total', ['symbol' => core()->currencySymbol(config('app.currency'))])
 
                             <input
@@ -600,7 +659,9 @@
 
                 data() {
                     return {
-                        adjustmentAmount: 0,
+                        adjustmentAmount: {{ $quote->adjustment_amount ?? 0 }},
+                        ivaPercentage: {{ $quote->iva_percentage ?? 14.00 }},
+                        ivaExempt: {{ $quote->iva_exempt ? 'true' : 'false' }},
 
                         products: @json($quote->items),
                     }
@@ -649,18 +710,37 @@
                     },
 
                     /**
-                     * Calculate the grand total of the products.
+                     * Subtotal before IVA (base de cálculo do IVA Angola).
+                     *
+                     * @returns {Number}
+                     */
+                    subTotalBeforeIva() {
+                        return Math.max(0, this.subTotal - this.discountAmount);
+                    },
+
+                    /**
+                     * Calculate IVA amount at configured rate (default 14% Angola).
+                     * Returns 0 if exempt.
+                     *
+                     * @returns {Number}
+                     */
+                    ivaAmount() {
+                        if (this.ivaExempt || parseFloat(this.ivaPercentage) <= 0) {
+                            return 0;
+                        }
+
+                        return Math.round(this.subTotalBeforeIva * (parseFloat(this.ivaPercentage) / 100) * 100) / 100;
+                    },
+
+                    /**
+                     * Calculate the grand total including IVA.
                      *
                      * @returns {Number}
                      */
                     grandTotal() {
-                        let total = 0;
-
-                        this.products.forEach(product => {
-                            total += parseFloat(product.price * product.quantity) + parseFloat(product.tax_amount) - parseFloat(product.discount_amount) + parseFloat(this.adjustmentAmount);
-                        });
-
-                        return total;
+                        return Math.round(
+                            (this.subTotalBeforeIva + this.ivaAmount + parseFloat(this.adjustmentAmount)) * 100
+                        ) / 100;
                     },
                 },
 

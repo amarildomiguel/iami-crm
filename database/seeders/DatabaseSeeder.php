@@ -15,5 +15,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(KrayinDatabaseSeeder::class);
+
+        // Fase 4 — Módulos Jurídicos
+        $this->call(LegalPipelineSeeder::class);
+        $this->call(AngolanCourtsSeeder::class);
+        $this->call(LegalAreasSeeder::class);
+        $this->call(AngolanHolidaysSeeder::class);
+        $this->call(LegalEmailTemplatesSeeder::class);
+
+        // Fase 6 — Conformidade Legal Angolana
+        $this->call(LegalRolesSeeder::class);
+        $this->call(LegalComplianceSeeder::class);
     }
 }
