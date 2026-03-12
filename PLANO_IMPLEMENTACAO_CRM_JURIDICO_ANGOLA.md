@@ -22,7 +22,9 @@ Transformação do Krayin CRM (sistema genérico de gestão de relacionamento co
 
 ---
 
-## 1. Análise do Estado Actual
+## 1. Análise do Estado Actual ✅ CONCLUÍDO
+
+> **Estado:** Concluído em Março de 2026. Estrutura analisada, pacotes identificados, mapeamento de entidades documentado.
 
 ### Estrutura do CRM Actual (Krayin CRM)
 
@@ -63,7 +65,14 @@ O sistema é construído em **Laravel** com frontend em **Blade + Vue.js**, orga
 
 ---
 
-## Fase 1 — Localização e Internacionalização (i18n)
+## Fase 1 — Localização e Internacionalização (i18n) ✅ CONCLUÍDO
+
+> **Estado:** Concluído em Março de 2026.
+> - Locale `pt_AO` criado em todos os pacotes (Admin, Installer, DataTransfer)
+> - Ficheiros Laravel core traduzidos (`lang/pt_AO/`: auth, pagination, passwords, validation)
+> - Terminologia jurídica angolana aplicada (Processos, Diligências, Advogados, etc.)
+> - `pt_AO` definido como locale padrão em `config/app.php` e `core_config.php`
+> - Moeda padrão definida como `AOA` (Kwanza Angolano)
 
 ### 1.1 Criar Locale `pt_AO` (Português de Angola)
 
@@ -686,9 +695,9 @@ tests/Feature/Legal/
 
 ### 7.4 Checklist de Qualidade
 
-- [ ] Todas as strings do frontend traduzidas para pt_AO
+- [x] Todas as strings do frontend traduzidas para pt_AO *(Fase 1 concluída)*
 - [ ] Nenhuma string hardcoded em inglês no frontend
-- [ ] Moeda exibida como Kz em todos os contextos
+- [ ] Moeda exibida como Kz em todos os contextos *(locale AOA configurado — Fase 2 pendente)*
 - [ ] Datas no formato DD/MM/AAAA
 - [ ] Números de telemóvel com formato angolano
 - [ ] Províncias angolanas disponíveis em todos os selectores
@@ -764,17 +773,18 @@ Preparar materiais de formação:
 
 ## Cronograma Estimado
 
-| Fase | Descrição                                  | Duração Estimada |
-|------|--------------------------------------------|------------------|
-| 1    | Localização e i18n (pt_AO)                | 1-2 semanas      |
-| 2    | Moeda e formato numérico                  | 3-5 dias         |
-| 3    | Reestruturação do modelo de dados         | 1-2 semanas      |
-| 4    | Novos módulos jurídicos                    | 3-4 semanas      |
-| 5    | Adaptação do frontend e UX               | 2-3 semanas      |
-| 6    | Conformidade legal angolana                | 1 semana         |
-| 7    | Testes e garantia de qualidade            | 1-2 semanas      |
-| 8    | Implantação e formação                    | 1 semana         |
-| **Total** |                                       | **10-15 semanas** |
+| Fase | Descrição                                  | Duração Estimada | Estado     |
+|------|--------------------------------------------|------------------|------------|
+| —    | Análise do Estado Actual                  | —                | ✅ Concluído |
+| 1    | Localização e i18n (pt_AO)                | 1-2 semanas      | ✅ Concluído |
+| 2    | Moeda e formato numérico                  | 3-5 dias         | ⏳ Pendente |
+| 3    | Reestruturação do modelo de dados         | 1-2 semanas      | ⏳ Pendente |
+| 4    | Novos módulos jurídicos                    | 3-4 semanas      | ⏳ Pendente |
+| 5    | Adaptação do frontend e UX               | 2-3 semanas      | ⏳ Pendente |
+| 6    | Conformidade legal angolana                | 1 semana         | ⏳ Pendente |
+| 7    | Testes e garantia de qualidade            | 1-2 semanas      | ⏳ Pendente |
+| 8    | Implantação e formação                    | 1 semana         | ⏳ Pendente |
+| **Total** |                                       | **10-15 semanas** | — |
 
 ---
 
