@@ -3,7 +3,7 @@
 <html
     class="{{ request()->cookie('dark_mode') ? 'dark' : '' }}"
     lang="{{ app()->getLocale() }}"
-    dir="{{ in_array(app()->getLocale(), ['fa', 'ar']) ? 'rtl' : 'ltr' }}"
+    dir="ltr"
 >
 
 <head>
