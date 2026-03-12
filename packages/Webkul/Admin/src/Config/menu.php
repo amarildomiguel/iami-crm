@@ -2,7 +2,7 @@
 
 return [
     /**
-     * Dashboard.
+     * Dashboard / Painel de Controlo.
      */
     [
         'key'        => 'dashboard',
@@ -13,7 +13,7 @@ return [
     ],
 
     /**
-     * Leads.
+     * Processos (antigo Leads).
      */
     [
         'key'        => 'leads',
@@ -24,24 +24,13 @@ return [
     ],
 
     /**
-     * Quotes.
-     */
-    [
-        'key'        => 'quotes',
-        'name'       => 'admin::app.layouts.quotes',
-        'route'      => 'admin.quotes.index',
-        'sort'       => 3,
-        'icon-class' => 'icon-quote',
-    ],
-
-    /**
      * Audiências.
      */
     [
         'key'        => 'hearings',
         'name'       => 'admin::app.layouts.hearings',
         'route'      => 'admin.hearings.index',
-        'sort'       => 35,
+        'sort'       => 3,
         'icon-class' => 'icon-calendar',
     ],
 
@@ -52,7 +41,7 @@ return [
         'key'        => 'documents',
         'name'       => 'admin::app.layouts.documents',
         'route'      => 'admin.documents.index',
-        'sort'       => 36,
+        'sort'       => 4,
         'icon-class' => 'icon-note',
     ],
 
@@ -63,7 +52,7 @@ return [
         'key'        => 'time-entries',
         'name'       => 'admin::app.layouts.time-entries',
         'route'      => 'admin.time-entries.index',
-        'sort'       => 37,
+        'sort'       => 5,
         'icon-class' => 'icon-clock',
     ],
 
@@ -74,40 +63,51 @@ return [
         'key'        => 'deadlines',
         'name'       => 'admin::app.layouts.deadlines',
         'route'      => 'admin.deadlines.index',
-        'sort'       => 38,
+        'sort'       => 6,
         'icon-class' => 'icon-deadline',
     ],
 
     /**
-     * Emails.
+     * Propostas de Honorários (antigo Quotes).
+     */
+    [
+        'key'        => 'quotes',
+        'name'       => 'admin::app.layouts.quotes',
+        'route'      => 'admin.quotes.index',
+        'sort'       => 7,
+        'icon-class' => 'icon-quote',
+    ],
+
+    /**
+     * Correspondência (antigo Mail).
      */
     [
         'key'        => 'mail',
         'name'       => 'admin::app.layouts.mail.title',
         'route'      => 'admin.mail.index',
         'params'     => ['route' => 'inbox'],
-        'sort'       => 4,
+        'sort'       => 8,
         'icon-class' => 'icon-mail',
     ], [
         'key'        => 'mail.inbox',
         'name'       => 'admin::app.layouts.mail.inbox',
         'route'      => 'admin.mail.index',
         'params'     => ['route' => 'inbox'],
-        'sort'       => 2,
+        'sort'       => 1,
         'icon-class' => '',
     ], [
         'key'        => 'mail.draft',
         'name'       => 'admin::app.layouts.mail.draft',
         'route'      => 'admin.mail.index',
         'params'     => ['route' => 'draft'],
-        'sort'       => 3,
+        'sort'       => 2,
         'icon-class' => '',
     ], [
         'key'        => 'mail.outbox',
         'name'       => 'admin::app.layouts.mail.outbox',
         'route'      => 'admin.mail.index',
         'params'     => ['route' => 'outbox'],
-        'sort'       => 4,
+        'sort'       => 3,
         'icon-class' => '',
     ], [
         'key'        => 'mail.sent',
@@ -126,24 +126,24 @@ return [
     ],
 
     /**
-     * Activities.
+     * Actividades / Diligências.
      */
     [
         'key'        => 'activities',
         'name'       => 'admin::app.layouts.activities',
         'route'      => 'admin.activities.index',
-        'sort'       => 5,
+        'sort'       => 9,
         'icon-class' => 'icon-activity',
     ],
 
     /**
-     * Contacts.
+     * Clientes (antigo Contacts).
      */
     [
         'key'        => 'contacts',
         'name'       => 'admin::app.layouts.contacts',
         'route'      => 'admin.contacts.persons.index',
-        'sort'       => 6,
+        'sort'       => 10,
         'icon-class' => 'icon-contact',
     ], [
         'key'        => 'contacts.persons',
@@ -160,24 +160,24 @@ return [
     ],
 
     /**
-     * Products.
+     * Serviços Jurídicos (antigo Products).
      */
     [
         'key'        => 'products',
         'name'       => 'admin::app.layouts.products',
         'route'      => 'admin.products.index',
-        'sort'       => 7,
+        'sort'       => 11,
         'icon-class' => 'icon-product',
     ],
 
     /**
-     * Settings.
+     * Definições (antigo Settings).
      */
     [
         'key'        => 'settings',
         'name'       => 'admin::app.layouts.settings',
         'route'      => 'admin.settings.index',
-        'sort'       => 8,
+        'sort'       => 12,
         'icon-class' => 'icon-setting',
     ], [
         'key'        => 'settings.user',
@@ -241,7 +241,7 @@ return [
         'info'       => 'admin::app.layouts.inventory-info',
         'route'      => 'admin.settings.pipelines.index',
         'icon-class' => '',
-        'sort'       => 2,
+        'sort'       => 3,
     ], [
         'key'        => 'settings.inventory.warehouse',
         'name'       => 'admin::app.layouts.warehouses',
@@ -254,7 +254,7 @@ return [
         'name'       => 'admin::app.layouts.automation',
         'info'       => 'admin::app.layouts.automation-info',
         'route'      => 'admin.settings.attributes.index',
-        'sort'       => 3,
+        'sort'       => 4,
         'icon-class' => '',
     ], [
         'key'        => 'settings.automation.attributes',
@@ -270,27 +270,6 @@ return [
         'route'      => 'admin.settings.email_templates.index',
         'sort'       => 2,
         'icon-class' => 'icon-settings-mail',
-    ], [
-        'key'        => 'settings.automation.events',
-        'name'       => 'admin::app.layouts.events',
-        'info'       => 'admin::app.layouts.events-info',
-        'route'      => 'admin.settings.marketing.events.index',
-        'sort'       => 2,
-        'icon-class' => 'icon-calendar',
-    ], [
-        'key'        => 'settings.automation.campaigns',
-        'name'       => 'admin::app.layouts.campaigns',
-        'info'       => 'admin::app.layouts.campaigns-info',
-        'route'      => 'admin.settings.marketing.campaigns.index',
-        'sort'       => 2,
-        'icon-class' => 'icon-note',
-    ], [
-        'key'        => 'settings.automation.webhooks',
-        'name'       => 'admin::app.layouts.webhooks',
-        'info'       => 'admin::app.layouts.webhooks-info',
-        'route'      => 'admin.settings.webhooks.index',
-        'sort'       => 2,
-        'icon-class' => 'icon-settings-webhooks',
     ], [
         'key'        => 'settings.automation.workflows',
         'name'       => 'admin::app.layouts.workflows',
@@ -310,7 +289,7 @@ return [
         'name'       => 'admin::app.layouts.other-settings',
         'info'       => 'admin::app.layouts.other-settings-info',
         'route'      => 'admin.settings.tags.index',
-        'sort'       => 4,
+        'sort'       => 5,
         'icon-class' => 'icon-settings',
     ], [
         'key'        => 'settings.other_settings.tags',
@@ -322,13 +301,13 @@ return [
     ],
 
     /**
-     * Configuration.
+     * Configuração.
      */
     [
         'key'        => 'configuration',
         'name'       => 'admin::app.layouts.configuration',
         'route'      => 'admin.configuration.index',
-        'sort'       => 9,
+        'sort'       => 13,
         'icon-class' => 'icon-configuration',
     ],
 ];

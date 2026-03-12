@@ -566,7 +566,17 @@ packages/Webkul/Lead/src/Repositories/LegalDeadlineRepository.php
 
 ---
 
-## Fase 5 — Adaptação do Frontend e UX
+## Fase 5 — Adaptação do Frontend e UX ✅ CONCLUÍDO
+
+> **Estado:** Concluído em Março de 2026.
+> - **Menu reestruturado** — Novos módulos jurídicos (Audiências, Documentos, Horas, Prazos) posicionados após Processos (sort 3–6), antes de Correspondência e Actividades
+> - **5 novos widgets no Painel de Controlo** — Processos Activos, Audiências da Semana, Prazos a Vencer, Horas Facturáveis Pendentes, Processos por Área Jurídica, Performance por Advogado
+> - **DashboardController** extendido com 7 novos tipos de stats legais (`active-processes`, `upcoming-hearings`, `upcoming-deadlines`, `billable-hours`, `processes-by-legal-area`, `processes-by-province`, `lawyer-performance`)
+> - **Dashboard helper** extendido com métodos: `getActiveProcesses()`, `getUpcomingHearings()`, `getUpcomingDeadlines()`, `getBillableHours()`, `getProcessesByLegalArea()`, `getProcessesByProvince()`, `getLawyerPerformance()`
+> - **Máscaras de input angolanas** implementadas como directivas Vue (`v-mask-nif`, `v-mask-bi`, `v-mask-phone`, `v-mask-kwanza`) no plugin `angola-masks.js`
+> - **Componentes Blade Angola** criados: `<x-admin::angola.address>` (seletor Província→Município→Comuna), `<x-admin::angola.phone-input>`, `<x-admin::angola.nif-input>`, `<x-admin::angola.bi-input>`
+> - **6 templates de e-mail jurídicos** criados via `LegalEmailTemplatesSeeder`: Confirmação de Consulta, Proposta de Honorários, Lembrete de Audiência, Actualização do Processo, Prazo a Vencer (alerta interno), Recibo de Pagamento
+> - **Traduções pt_AO** actualizadas: terminologia jurídica corrigida (Negócio → Processo, Funis → Fluxos Processuais, etc.), labels do dashboard em português de Angola, componentes Angola traduzidos
 
 ### 5.1 Menu Principal (Sidebar)
 
@@ -812,7 +822,7 @@ Preparar materiais de formação:
 | 2    | Moeda e formato numérico                  | 3-5 dias         | ✅ Concluído |
 | 3    | Reestruturação do modelo de dados         | 1-2 semanas      | ✅ Concluído |
 | 4    | Novos módulos jurídicos                    | 3-4 semanas      | ✅ Concluído |
-| 5    | Adaptação do frontend e UX               | 2-3 semanas      | ⏳ Pendente |
+| 5    | Adaptação do frontend e UX               | 2-3 semanas      | ✅ Concluído |
 | 6    | Conformidade legal angolana                | 1 semana         | ⏳ Pendente |
 | 7    | Testes e garantia de qualidade            | 1-2 semanas      | ⏳ Pendente |
 | 8    | Implantação e formação                    | 1 semana         | ⏳ Pendente |
