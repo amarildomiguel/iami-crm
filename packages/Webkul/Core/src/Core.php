@@ -203,14 +203,23 @@ class Core
      */
     public function currencySymbol($code)
     {
+        if ($code === 'AOA') {
+            return 'Kz';
+        }
+
         $formatter = new \NumberFormatter(app()->getLocale().'@currency='.$code, \NumberFormatter::CURRENCY);
 
         return $formatter->getSymbol(\NumberFormatter::CURRENCY_SYMBOL);
     }
 
     /**
-     * Format price with base currency symbol. This method also give ability to encode
-     * the base currency symbol and its optional.
+     * Format price with base currency symbol.
+     *
+     * For AOA (Kwanza Angolano) uses the Angolan convention:
+     *   - Thousands separator: . (period)
+     *   - Decimal separator:   , (comma)
+     *   - Symbol:              Kz (suffix)
+     *   - Example:             1.234.567,00 Kz
      *
      * @param  float  $price
      * @return string
@@ -221,9 +230,32 @@ class Core
             $price = 0;
         }
 
+        $currency = config('app.currency');
+
+        if ($currency === 'AOA') {
+            return $this->formatAOAPrice($price);
+        }
+
         $formatter = new \NumberFormatter(app()->getLocale(), \NumberFormatter::CURRENCY);
 
-        return $formatter->formatCurrency($price, config('app.currency'));
+        return $formatter->formatCurrency($price, $currency);
+    }
+
+    /**
+     * Format a numeric value as Angolan Kwanza (AOA).
+     *
+     * Format: 1.234.567,00 Kz
+     *
+     * @param  float  $price
+     * @return string
+     */
+    public function formatAOAPrice($price)
+    {
+        if (is_null($price)) {
+            $price = 0;
+        }
+
+        return number_format((float) $price, 2, ',', '.') . ' Kz';
     }
 
     /**

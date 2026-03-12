@@ -40,6 +40,21 @@ class Lead extends Model implements LeadContract
         'lead_type_id',
         'lead_pipeline_id',
         'lead_pipeline_stage_id',
+        // Campos jurídicos angolanos
+        'case_number',
+        'court',
+        'court_section',
+        'case_type',
+        'jurisdiction',
+        'judge_name',
+        'opponent_name',
+        'opponent_lawyer',
+        'filing_date',
+        'next_hearing_date',
+        'urgency_level',
+        'legal_area',
+        'case_summary',
+        'province',
     ];
 
     /**
@@ -50,6 +65,8 @@ class Lead extends Model implements LeadContract
     protected $casts = [
         'closed_at'           => 'datetime:D M d, Y H:i A',
         'expected_close_date' => 'date:D M d, Y',
+        'filing_date'         => 'date',
+        'next_hearing_date'   => 'date',
     ];
 
     /**
@@ -147,6 +164,38 @@ class Lead extends Model implements LeadContract
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(TagProxy::modelClass(), 'lead_tags');
+    }
+
+    /**
+     * Get the legal documents for this process.
+     */
+    public function legalDocuments(): HasMany
+    {
+        return $this->hasMany(LegalDocumentProxy::modelClass());
+    }
+
+    /**
+     * Get the hearings for this process.
+     */
+    public function hearings(): HasMany
+    {
+        return $this->hasMany(HearingProxy::modelClass());
+    }
+
+    /**
+     * Get the time entries for this process.
+     */
+    public function timeEntries(): HasMany
+    {
+        return $this->hasMany(TimeEntryProxy::modelClass());
+    }
+
+    /**
+     * Get the legal deadlines for this process.
+     */
+    public function legalDeadlines(): HasMany
+    {
+        return $this->hasMany(LegalDeadlineProxy::modelClass());
     }
 
     /**
