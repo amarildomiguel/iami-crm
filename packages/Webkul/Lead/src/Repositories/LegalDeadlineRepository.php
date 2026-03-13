@@ -66,15 +66,26 @@ class LegalDeadlineRepository extends Repository
 
     /**
      * Calculate due date from start date considering Angolan business days.
+     *
+     * Recalculates holiday lists whenever the year changes during iteration,
+     * so that year-crossing deadlines (e.g. starting 31/12) are handled correctly.
      */
     public function calculateDueDate(\Carbon\Carbon $startDate, int $businessDays): \Carbon\Carbon
     {
-        $angolanHolidays = $this->getAngolanHolidays($startDate->year);
-        $date = $startDate->copy();
-        $daysAdded = 0;
+        $date            = $startDate->copy();
+        $currentYear     = $date->year;
+        $angolanHolidays = $this->getAngolanHolidays($currentYear);
+        $daysAdded       = 0;
 
         while ($daysAdded < $businessDays) {
             $date->addDay();
+
+            // Refresh holiday list when the year changes
+            if ($date->year !== $currentYear) {
+                $currentYear     = $date->year;
+                $angolanHolidays = $this->getAngolanHolidays($currentYear);
+            }
+
             if ($date->isWeekday() && ! in_array($date->format('Y-m-d'), $angolanHolidays)) {
                 $daysAdded++;
             }
